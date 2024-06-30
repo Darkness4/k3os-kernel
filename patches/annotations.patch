@@ -1,0 +1,70 @@
+diff --git a/debian.master/config/annotations b/debian.master/config/annotations
+index f307969b7..0169cc7a6 100644
+--- a/debian.master/config/annotations
++++ b/debian.master/config/annotations
+@@ -1993,7 +1993,7 @@ CONFIG_AX25_DAMA_SLAVE                          policy<{'amd64': 'y', 'arm64': '
+ CONFIG_AX45MP_L2_CACHE                          policy<{'riscv64': 'n'}>
+ CONFIG_AX88796                                  policy<{'armhf': 'm'}>
+ CONFIG_AX88796B_PHY                             policy<{'amd64': 'm', 'arm64': 'm', 'armhf': 'm', 'ppc64el': 'm', 'riscv64': 'm', 's390x': 'n'}>
+-CONFIG_AX88796B_RUST_PHY                        policy<{'amd64': 'n'}>
++CONFIG_AX88796B_RUST_PHY                        policy<{'amd64': '-'}>
+ CONFIG_AX88796_93CX6                            policy<{'armhf': 'n'}>
+ CONFIG_AXI_DMAC                                 policy<{'arm64': 'm', 'armhf': 'm'}>
+ CONFIG_AXP20X_ADC                               policy<{'amd64': 'm', 'arm64': 'm', 'armhf': 'm', 'ppc64el': 'm', 'riscv64': 'm'}>
+@@ -3261,7 +3261,7 @@ CONFIG_CONNECTOR                                policy<{'amd64': 'y', 'arm64': '
+ CONFIG_CONSOLE_LOGLEVEL_DEFAULT                 policy<{'amd64': '7', 'arm64': '7', 'armhf': '7', 'ppc64el': '7', 'riscv64': '7', 's390x': '7'}>
+ CONFIG_CONSOLE_POLL                             policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y'}>
+ CONFIG_CONSOLE_TRANSLATIONS                     policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+-CONFIG_CONSTRUCTORS                             policy<{'amd64': 'y'}>
++CONFIG_CONSTRUCTORS                             policy<{'amd64': '-'}>
+ CONFIG_CONTEXT_SWITCH_TRACER                    policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+ CONFIG_CONTEXT_TRACKING                         policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+ CONFIG_CONTEXT_TRACKING_IDLE                    policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+@@ -6328,7 +6328,8 @@ CONFIG_IIO_TIGHTLOOP_TRIGGER                    policy<{'amd64': 'm', 'arm64': '
+ CONFIG_IIO_TRIGGER                              policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y'}>
+ CONFIG_IIO_TRIGGERED_BUFFER                     policy<{'amd64': 'm', 'arm64': 'm', 'armhf': 'm', 'ppc64el': 'm', 'riscv64': 'm'}>
+ CONFIG_IIO_TRIGGERED_EVENT                      policy<{'amd64': 'm', 'arm64': 'm', 'armhf': 'm', 'ppc64el': 'm', 'riscv64': 'm'}>
+-CONFIG_IKCONFIG                                 policy<{'amd64': 'n', 'arm64': 'n', 'armhf': 'n', 'ppc64el': 'n', 'riscv64': 'n', 's390x': 'n'}>
++CONFIG_IKCONFIG                                 policy<{'amd64': 'm', 'arm64': 'm', 'armhf': 'm', 'ppc64el': 'm', 'riscv64': 'm', 's390x': 'm'}>
++CONFIG_IKCONFIG_PROC                            policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+ CONFIG_IKHEADERS                                policy<{'amd64': 'm', 'arm64': 'm', 'armhf': 'm', 'ppc64el': 'm', 'riscv64': 'm', 's390x': 'm'}>
+ CONFIG_ILLEGAL_POINTER_VALUE                    policy<{'amd64': '0xdead000000000000', 'arm64': '0xdead000000000000', 'ppc64el': '0x5deadbeef0000000'}>
+ CONFIG_IMA_APPRAISE_BOOTPARAM                   policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+@@ -7505,7 +7506,7 @@ CONFIG_LRU_CACHE                                policy<{'amd64': 'm', 'arm64': '
+ CONFIG_LRU_GEN_STATS                            policy<{'amd64': 'n', 'arm64': 'n', 'ppc64el': 'n', 'riscv64': 'n', 's390x': 'n'}>
+ CONFIG_LRU_GEN_WALKS_MMU                        policy<{'amd64': 'y', 'arm64': 'y'}>
+ CONFIG_LSI_ET1011C_PHY                          policy<{'amd64': 'm', 'arm64': 'm', 'armhf': 'm', 'ppc64el': 'm', 'riscv64': 'm', 's390x': 'm'}>
+-CONFIG_LSM                                      policy<{'amd64': '"landlock,lockdown,yama,integrity,apparmor"', 'arm64': '"landlock,lockdown,yama,integrity,apparmor"', 'armhf': '"landlock,lockdown,yama,integrity,apparmor"', 'ppc64el': '"landlock,lockdown,yama,integrity,apparmor"', 'riscv64': '"landlock,lockdown,yama,integrity,apparmor"', 's390x': '"landlock,lockdown,yama,integrity,apparmor"'}>
++CONFIG_LSM                                      policy<{'amd64': '"landlock,lockdown,yama,integrity"', 'arm64': '"landlock,lockdown,yama,integrity"', 'armhf': '"landlock,lockdown,yama,integrity"', 'ppc64el': '"landlock,lockdown,yama,integrity"', 'riscv64': '"landlock,lockdown,yama,integrity"', 's390x': '"landlock,lockdown,yama,integrity"'}>
+ CONFIG_LSM_MMAP_MIN_ADDR                        policy<{'amd64': '0', 'arm64': '0', 'armhf': '0', 'ppc64el': '0', 'riscv64': '0', 's390x': '0'}>
+ CONFIG_LS_EXTIRQ                                policy<{'arm64': 'y'}>
+ CONFIG_LS_SCFG_MSI                              policy<{'arm64': 'y'}>
+@@ -11362,13 +11363,13 @@ CONFIG_RTW89_PCI                                policy<{'amd64': 'm', 'arm64': '
+ CONFIG_RT_MUTEXES                               policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+ CONFIG_RUNTIME_KERNEL_TESTING_MENU              policy<{'riscv64': 'n'}>
+ CONFIG_RUNTIME_TESTING_MENU                     policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+-CONFIG_RUST                                     policy<{'amd64': 'y'}>
++CONFIG_RUST                                     policy<{'amd64': '-'}>
+ CONFIG_RUSTC_VERSION_TEXT                       policy<{'amd64': '"rustc 1.75.0 (82e1608df 2023-12-21) (built from a source tarball)"'}>
+-CONFIG_RUST_BUILD_ASSERT_ALLOW                  policy<{'amd64': 'n'}>
+-CONFIG_RUST_DEBUG_ASSERTIONS                    policy<{'amd64': 'n'}>
+-CONFIG_RUST_IS_AVAILABLE                        policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+-CONFIG_RUST_OVERFLOW_CHECKS                     policy<{'amd64': 'y'}>
+-CONFIG_RUST_PHYLIB_ABSTRACTIONS                 policy<{'amd64': 'y'}>
++CONFIG_RUST_BUILD_ASSERT_ALLOW                  policy<{'amd64': '-'}>
++CONFIG_RUST_DEBUG_ASSERTIONS                    policy<{'amd64': '-'}>
++CONFIG_RUST_IS_AVAILABLE                        policy<{'amd64': '-', 'arm64': '-', 'armhf': '-', 'ppc64el': '-', 'riscv64': '-', 's390x': '-'}>
++CONFIG_RUST_OVERFLOW_CHECKS                     policy<{'amd64': '-'}>
++CONFIG_RUST_PHYLIB_ABSTRACTIONS                 policy<{'amd64': '-'}>
+ CONFIG_RV                                       policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+ CONFIG_RV_MON_WWNR                              policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+ CONFIG_RV_REACTORS                              policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+@@ -11397,7 +11398,7 @@ CONFIG_S390_VMUR                                policy<{'s390x': 'm'}>
+ CONFIG_S3C2410_WATCHDOG                         policy<{'armhf': 'n'}>
+ CONFIG_S5P_DEV_MFC                              policy<{'armhf': 'y'}>
+ CONFIG_SAMPLES                                  policy<{'amd64': 'y', 'arm64': 'y', 'armhf': 'y', 'ppc64el': 'y', 'riscv64': 'y', 's390x': 'y'}>
+-CONFIG_SAMPLES_RUST                             policy<{'amd64': 'n'}>
++CONFIG_SAMPLES_RUST                             policy<{'amd64': '-'}>
+ CONFIG_SAMPLE_AUXDISPLAY                        policy<{'amd64': 'n', 'arm64': 'n', 'armhf': 'n', 'ppc64el': 'n', 'riscv64': 'n', 's390x': 'n'}>
+ CONFIG_SAMPLE_CONFIGFS                          policy<{'amd64': 'n', 'arm64': 'n', 'armhf': 'n', 'ppc64el': 'n', 'riscv64': 'n', 's390x': 'n'}>
+ CONFIG_SAMPLE_FPROBE                            policy<{'amd64': 'n', 'riscv64': '-', 's390x': 'n'}>

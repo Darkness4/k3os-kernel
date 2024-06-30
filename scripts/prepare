@@ -9,10 +9,7 @@ set -x
 mkdir -p ${DOWNLOADS}/kernel ${DOWNLOADS}/firmware
 
 # kernel
-mkdir -p build/kernel
-dpkg-deb -x ${DOWNLOADS}/ubuntu-kernel.deb ${DOWNLOADS}/kernel
-rsync -a ${DOWNLOADS}/kernel/usr/src/linux-source-*/debian* ./build/kernel/
-tar xf ${DOWNLOADS}/kernel/usr/src/linux-source-*/linux-source*.tar.bz2 -C ./build/kernel/. --strip-components=1
+ln -s ${DOWNLOADS}/kernel build/kernel
 
 ## firmware
 #mkdir -p build/firmware
@@ -25,7 +22,7 @@ if [ -n "${NOPATCHES}" ]; then
 fi
 PATCHES_DIR=$(pwd)/patches
 pushd build/kernel
-for p in `find ${PATCHES_DIR} -name "*.patch"`; do
+for p in $(find ${PATCHES_DIR} -name "*.patch"); do
     echo "applying $p"
     patch -p1 -i $p
 done

@@ -1,4 +1,5 @@
 dist/
 build/
+kernel/
 *.swp
 .dapper

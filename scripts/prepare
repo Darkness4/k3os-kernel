@@ -1,29 +1,25 @@
 #!/bin/bash
 set -e
 
-source $(dirname $0)/version
-cd $(dirname $0)/..
+source "$(dirname "$0")"/version
+cd "$(dirname "$0")"/..
+
+KERNEL_DIR=build/kernel
 
 set -x
 
-mkdir -p ${DOWNLOADS}/kernel ${DOWNLOADS}/firmware
-
 # kernel
-ln -s ${DOWNLOADS}/kernel build/kernel
-
-## firmware
-#mkdir -p build/firmware
-#dpkg-deb -x ${DOWNLOADS}/ubuntu-firmware.deb ${DOWNLOADS}/firmware
-#rsync -a ${DOWNLOADS}/firmware/lib/firmware/* ./build/firmware/
+rsync -aP "${DOWNLOADS}/kernel/" "${KERNEL_DIR}/"
 
 # patches
 if [ -n "${NOPATCHES}" ]; then
     exit 0
 fi
 PATCHES_DIR=$(pwd)/patches
-pushd build/kernel
-for p in $(find ${PATCHES_DIR} -name "*.patch"); do
+pushd ${KERNEL_DIR}
+
+for p in "${PATCHES_DIR}"/*.patch; do
     echo "applying $p"
-    patch -p1 -i $p
+    patch -p1 -i "$p"
 done
 popd

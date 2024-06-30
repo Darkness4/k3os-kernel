@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-source $(dirname $0)/version
-cd $(dirname $0)/..
+source "$(dirname "$0")/version"
+cd "$(dirname "$0")/.."
 
 KERNEL_DIR=build/kernel
 
@@ -16,7 +16,8 @@ pushd ${KERNEL_DIR}
 unset -v ARCH KERNEL_DIR
 debian/rules clean
 # see https://wiki.ubuntu.com/KernelTeam/KernelMaintenance#Overriding_module_check_failures
-export DEB_BUILD_OPTIONS="parallel=$(nproc)"
+DEB_BUILD_OPTIONS="parallel=$(nproc)"
+export DEB_BUILD_OPTIONS
 debian/rules binary-headers binary-generic \
     do_zfs=false \
     do_dkms_nvidia=false \

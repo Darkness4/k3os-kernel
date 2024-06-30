@@ -1,0 +1,61 @@
+ARG BUILD=library/buildpack-deps:noble
+ARG UBUNTU=library/ubuntu:noble
+ARG DOWNLOADS=/usr/src/downloads
+
+FROM ${UBUNTU} AS ubuntu
+ARG DOWNLOADS
+ARG LINUX_FIRMWARE=linux-firmware
+ARG LINUX_KERNEL_GIT_BRANCH=Ubuntu-6.8.0-38.38
+ARG LINUX_KERNEL_GIT_URL=git://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/noble
+ENV DEBIAN_FRONTEND=noninteractive
+RUN set -x \
+  && apt-get --assume-yes update \
+  && apt-get --assume-yes download \
+  ${LINUX_FIRMWARE} \
+  && apt install -y git \
+  && mkdir -vp ${DOWNLOADS} \
+  && mv -vf linux-firmware* ${DOWNLOADS}/ubuntu-firmware.deb \
+  && git clone --depth 1 --branch=${LINUX_KERNEL_GIT_BRANCH} "${LINUX_KERNEL_GIT_URL}" ${DOWNLOADS}/kernel
+
+FROM ${BUILD}
+ARG DOWNLOADS
+COPY --from=ubuntu ${DOWNLOADS}/ ${DOWNLOADS}/
+RUN apt-get --assume-yes update \
+  && apt-get --assume-yes install --no-install-recommends --upgrade \
+  bc \
+  bison \
+  ccache \
+  cpio \
+  dkms \
+  dwarves \
+  fakeroot \
+  flex \
+  gawk  \
+  gcc \
+  gnupg2 \
+  kernel-wedge \
+  kmod \
+  less \
+  libelf-dev \
+  libiberty-dev \
+  liblz4-tool \
+  libncurses-dev \
+  libpci-dev \
+  libssl-dev \
+  libudev-dev \
+  linux-libc-dev \
+  locales \
+  rsync \
+  vim \
+  git \
+  zstd \
+  crossbuild-essential-arm64 \
+  dpkg-cross \
+  gcc-aarch64-linux-gnu \
+  g++-aarch64-linux-gnu \
+  && rm -f /bin/sh && ln -s /bin/bash /bin/sh
+
+WORKDIR /work
+ENV DOWNLOADS ${DOWNLOADS}
+
+CMD ["./scripts/ci"]
